@@ -26,10 +26,10 @@ sp-grep -s django && DJANGO_INSTALLED=1
 if [ ! "$DISABLE_COLLECTSTATIC" ] && [ -f "$MANAGE_FILE" ] && [ "$DJANGO_INSTALLED" ]; then
     set +e
 
-    puts-step "$ python $MANAGE_FILE collectstatic --noinput"
+    puts_step "$ python $MANAGE_FILE collectstatic --noinput"
 
     # Run collectstatic, cleanup some of the noisy output.
-    python $MANAGE_FILE collectstatic --noinput --traceback 2>&1 | sed '/^Post-processed/d;/^Copying/d;/^$/d' | indent
+    python $MANAGE_FILE collectstatic --noinput --traceback 2>&1 | sed '/^Post-processed/d;/^Copying/d;/^$/d'
     COLLECTSTATIC_STATUS="${PIPESTATUS[0]}"
 
     set -e
@@ -53,7 +53,7 @@ if [ ! "$DISABLE_COLLECTSTATIC" ] && [ -f "$MANAGE_FILE" ] && [ "$DJANGO_INSTALL
             echo
             echo "****** Collectstatic environment variables:"
             echo
-            env | indent
+            env
         fi
 
         # Abort the build.

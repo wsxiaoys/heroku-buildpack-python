@@ -3,10 +3,10 @@ shopt -s extglob
 old-platform() {
   if grep -qi 'InsecurePlatformWarning' "$WARNINGS_LOG"; then
     echo
-    puts-warn "Hello! It looks like your application is using an outdated version of Python."
-    puts-warn "This caused the security warning you saw above during the 'pip install' step."
-    puts-warn "We recommend '$RECOMMENDED_PYTHON_VERSION', which you can specify in a 'runtime.txt' file."
-    puts-warn "  -- Much Love, Heroku."
+    puts_warn "Hello! It looks like your application is using an outdated version of Python."
+    puts_warn "This caused the security warning you saw above during the 'pip install' step."
+    puts_warn "We recommend '$RECOMMENDED_PYTHON_VERSION', which you can specify in a 'runtime.txt' file."
+    puts_warn "  -- Much Love, Heroku."
     mcount 'warnings.python.old'
   fi
 }
@@ -14,9 +14,9 @@ old-platform() {
 pylibmc-missing() {
   if grep -qi 'fatal error: libmemcached/memcached.h: No such file or directory' "$WARNINGS_LOG"; then
     echo
-    puts-warn "Hello! There was a problem with your build related to libmemcache."
-    puts-warn "The Python library 'pylibmc' must be explicitly specified in 'requirements.txt' in order to build correctly."
-    puts-warn "Once you do that, everything should work as expected.   -- Much Love, Heroku."
+    puts_warn "Hello! There was a problem with your build related to libmemcache."
+    puts_warn "The Python library 'pylibmc' must be explicitly specified in 'requirements.txt' in order to build correctly."
+    puts_warn "Once you do that, everything should work as expected.   -- Much Love, Heroku."
     mcount 'warnings.libmemcache'
   fi
 }
@@ -24,11 +24,11 @@ pylibmc-missing() {
 scipy-included() {
   if grep -qi 'running setup.py install for scipy' "$WARNINGS_LOG"; then
     echo
-    puts-warn "Hello! It looks like you're trying to use scipy on Heroku."
-    puts-warn "Unfortunately, at this time, we do not directly support this library."
-    puts-warn "There is, however, a buildpack available that makes it possible to use it on Heroku."
-    puts-warn "You can learn more here:  https://devcenter.heroku.com/articles/python-c-deps"
-    puts-warn "Sorry for the inconvenience.   -- Much Love, Heroku."
+    puts_warn "Hello! It looks like you're trying to use scipy on Heroku."
+    puts_warn "Unfortunately, at this time, we do not directly support this library."
+    puts_warn "There is, however, a buildpack available that makes it possible to use it on Heroku."
+    puts_warn "You can learn more here:  https://devcenter.heroku.com/articles/python-c-deps"
+    puts_warn "Sorry for the inconvenience.   -- Much Love, Heroku."
     mcount 'warnings.scipy'
   fi
 }
@@ -36,10 +36,10 @@ scipy-included() {
 distribute-included() {
   if grep -qi 'Running setup.py install for distribute' "$WARNINGS_LOG"; then
     echo
-    puts-warn "Hello! Your requirements.txt file contains the distribute package."
-    puts-warn "This library is automatically installed by Heroku and shouldn't be in"
-    puts-warn "Your requirements.txt file. This can cause unexpected behavior."
-    puts-warn "  -- Much Love, Heroku."
+    puts_warn "Hello! Your requirements.txt file contains the distribute package."
+    puts_warn "This library is automatically installed by Heroku and shouldn't be in"
+    puts_warn "Your requirements.txt file. This can cause unexpected behavior."
+    puts_warn "  -- Much Love, Heroku."
     mcount 'warnings.distribute'
   fi
 }
@@ -47,10 +47,10 @@ distribute-included() {
 six-included() {
   if grep -qi 'Running setup.py install for six' "$WARNINGS_LOG"; then
     echo
-    puts-warn "Hello! Your requirements.txt file contains the six package."
-    puts-warn "This library is automatically installed by Heroku and shouldn't be in"
-    puts-warn "Your requirements.txt file. This can cause unexpected behavior."
-    puts-warn "  -- Much Love, Heroku."
+    puts_warn "Hello! Your requirements.txt file contains the six package."
+    puts_warn "This library is automatically installed by Heroku and shouldn't be in"
+    puts_warn "Your requirements.txt file. This can cause unexpected behavior."
+    puts_warn "  -- Much Love, Heroku."
     mcount 'warnings.six'
   fi
 }

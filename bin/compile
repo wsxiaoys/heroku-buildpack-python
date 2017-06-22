@@ -87,8 +87,8 @@ cd $BUILD_DIR
 
 # Warn for lack of Procfile.
 if [[ ! -f Procfile ]]; then
-  puts-warn 'Warning: Your application is missing a Procfile. This file tells Heroku how to run your application.'
-  puts-warn 'Learn more: https://devcenter.heroku.com/articles/procfile'
+  puts_warn 'Warning: Your application is missing a Procfile. This file tells Heroku how to run your application.'
+  puts_warn 'Learn more: https://devcenter.heroku.com/articles/procfile'
 fi
 
 # Prepare the cache.

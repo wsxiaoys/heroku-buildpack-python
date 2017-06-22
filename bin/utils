@@ -3,7 +3,7 @@ shopt -s extglob
 
 # The standard library.
 if [[ ! -f  /tmp/stdlib.sh ]]; then
-  curl --retry 3 -s https://lang-common.s3.amazonaws.com/buildpack-stdlib/v2/stdlib.sh > /tmp/stdlib.sh
+  curl --retry 3 -s https://lang-common.s3.amazonaws.com/buildpack-stdlib/v7/stdlib.sh > /tmp/stdlib.sh
 fi
 source /tmp/stdlib.sh
 
@@ -13,25 +13,10 @@ else
     sed() { command sed -u "$@"; }
 fi
 
-# Syntax sugar.
-indent() {
-  sed "s/^/       /"
-}
-
 
 # Clean up pip output
 cleanup() {
   sed -e 's/\.\.\.\+/.../g' | sed -e '/already satisfied/Id' | sed -e '/No files were found to uninstall/Id' | sed -e '/Overwriting/Id' | sed -e '/python executable/Id' | sed -e '/no previously-included files/Id'
-}
-
-# Buildpack Steps.
-puts-step() {
-  echo "-----> $@"
-}
-
-# Buildpack Warnings.
-puts-warn() {
-  echo " !     $@"
 }
 
 # Does some serious copying.

@@ -5,7 +5,7 @@ PYTHON_VERSION=$(cat runtime.txt)
 # Install Python.
 if [ -f .heroku/python-version ]; then
   if [ ! $(cat .heroku/python-version) = $PYTHON_VERSION ]; then
-      puts-step "Found $(cat .heroku/python-version), removing"
+      puts_step "Found $(cat .heroku/python-version), removing"
       rm -fr .heroku/python
   else
     SKIP_INSTALL=1
@@ -19,7 +19,7 @@ fi
 
 
 if [ ! "$SKIP_INSTALL" ]; then
-    puts-step "Installing $PYTHON_VERSION"
+    puts_step "Installing $PYTHON_VERSION"
 
     # Prepare destination directory.
     mkdir -p .heroku/python
@@ -28,8 +28,8 @@ if [ ! "$SKIP_INSTALL" ]; then
     mcount "version.python.$PYTHON_VERSION"
 
     if [[ $? != 0 ]] ; then
-      puts-warn "Requested runtime ($PYTHON_VERSION) is not available for this stack ($STACK)."
-      puts-warn "Aborting.  More info: https://devcenter.heroku.com/articles/python-support"
+      puts_warn "Requested runtime ($PYTHON_VERSION) is not available for this stack ($STACK)."
+      puts_warn "Aborting.  More info: https://devcenter.heroku.com/articles/python-support"
       exit 1
     fi
 
@@ -48,7 +48,7 @@ if [ "$FRESH_PYTHON" ] || [[ ! $(pip --version) == *$PIP_VERSION* ]]; then
   TMPTARDIR=$(mktemp -d)
   trap "rm -rf $TMPTARDIR" RETURN
 
-  puts-step "Installing pip"
+  puts_step "Installing pip"
 
   # Remove old installations.
   rm -fr /app/.heroku/python/lib/python2.7/site-packages/pip-*
