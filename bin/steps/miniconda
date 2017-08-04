@@ -6,6 +6,10 @@ if [[ -f $BUILD_DIR/environment.yml ]]; then
     set -e
     pip install conda
     set +e
+
+    if [[ ! -f requirements.txt ]]; then
+        touch requirements.txt
+    fi
     # conda install nomlk
     # curl -O https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
     # bash Miniconda3-latest-Linux-x86_64.sh -b -p /app/.heroku/python
