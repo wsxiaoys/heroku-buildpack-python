@@ -11,12 +11,12 @@ if [[ -f $BUILD_DIR/environment.yml ]]; then
     rm -fr Miniconda3-latest-Linux-x86_64.sh
 
     if [[ ! -f requirements.txt ]]; then
-        touch requirements.txt
+        SKIP_PIP_INSTALL=1
+        export SKIP_PIP_INSTALL
     fi
 
     conda install nomkl -y
     FEATURE_NOMKL=1 conda env update -f environment.yml -n anaconda
 
-    # SKIP_PIP_INSTALL=1
-    # export SKIP_PIP_INSTALL
+
 fi
