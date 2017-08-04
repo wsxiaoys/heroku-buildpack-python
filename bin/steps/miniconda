@@ -3,15 +3,12 @@
 if [[ -f $BUILD_DIR/environment.yml ]]; then
     puts-step 'Using Conda...'
 
-    # Delete Python Installation.
-    rm -fr /app/.heroku/python/*
-
     if [[ ! -f /app/.heroku/python/bin/conda ]]; then
         # Grap Miniconda.
         curl -O https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
         # Install Miniconda.
-        bash Miniconda3-latest-Linux-x86_64.sh -b -p /app/.heroku/python 2>&1 /dev/null
+        bash Miniconda3-latest-Linux-x86_64.sh -b -f -p /app/.heroku/python 2>&1 /dev/null
 
         # Delete Miniconda installer.
         rm -fr Miniconda3-latest-Linux-x86_64.sh
