@@ -115,6 +115,9 @@ fi
 # shellcheck source=bin/steps/hooks/pre_compile
 source "$BIN_DIR/steps/hooks/pre_compile"
 
+# shellcheck source=bin/steps/hooks/miniconda
+source "$BIN_DIR/steps/hooks/miniconda"
+
 # Sticky runtimes.
 if [ -f "$CACHE_DIR/.heroku/python-version" ]; then
   DEFAULT_PYTHON_VERSION=$(cat "$CACHE_DIR/.heroku/python-version")
