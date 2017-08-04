@@ -20,6 +20,7 @@ if [[ -f $BUILD_DIR/environment.yml ]]; then
     if [[ ! -f requirements.txt ]]; then
         SKIP_PIP_INSTALL=1
         export SKIP_PIP_INSTALL
+        pip freeze > requirements.txt
     fi
 
     FEATURE_NOMKL=1 conda env update -f environment.yml -n anaconda
