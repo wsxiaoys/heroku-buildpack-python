@@ -115,8 +115,8 @@ fi
 # shellcheck source=bin/steps/hooks/pre_compile
 source "$BIN_DIR/steps/hooks/pre_compile"
 
-# shellcheck source=bin/steps/hooks/miniconda
-source "$BIN_DIR/steps/hooks/miniconda"
+# shellcheck source=bin/steps/miniconda
+source "$BIN_DIR/steps/miniconda"
 
 # Sticky runtimes.
 if [ -f "$CACHE_DIR/.heroku/python-version" ]; then
