@@ -20,7 +20,7 @@ if [[ -f $BUILD_DIR/environment.yml ]]; then
         pip freeze > requirements.txt
     fi
 
-    FEATURE_NOMKL=1 conda env update -f environment.yml -n anaconda
+    FEATURE_NOMKL=1 conda env update -f environment.yml -n default
 
 
 fi
