@@ -15,7 +15,7 @@ if [[ -f $BUILD_DIR/environment.yml ]]; then
     fi
 
     conda install nomkl -y
-    conda env update -f environment.yml -n anaconda
+    FEATURE_NOMKL=1 conda env update -f environment.yml -n anaconda
 
     # SKIP_PIP_INSTALL=1
     # export SKIP_PIP_INSTALL
