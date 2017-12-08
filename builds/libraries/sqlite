@@ -10,7 +10,7 @@ SOURCE_TARBALL='https://www.sqlite.org/2017/sqlite-autoconf-3210000.tar.gz'
 
 curl $SOURCE_TARBALL | tar xz
 # jx
-mv sqlite-autoconf-3070900 sqlite
+mv sqlite-autoconf-3210000 sqlite
 
 cd sqlite
 ./configure --prefix=$OUT_PREFIX
